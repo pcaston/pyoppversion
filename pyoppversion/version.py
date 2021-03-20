@@ -9,7 +9,12 @@ from awesomeversion import AwesomeVersion
 from pyoppversion.exceptions import OppVersionFetchException, OppVersionParseException
 
 from .base import OppVersionBase
-from .consts import DEFAULT_TIMEOUT, OppVersionBoard, OppVersionChannel, OppVersionSource
+from .consts import (
+    DEFAULT_TIMEOUT,
+    OppVersionBoard,
+    OppVersionChannel,
+    OppVersionSource,
+)
 from .docker import OppVersionDocker
 from .oppio import OppVersionOPPIO
 from .local import OppVersionLocal
