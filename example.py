@@ -1,33 +1,22 @@
 """Example usage of pyoppversion."""
 import asyncio
-
 import aiohttp
 
-from pyoppversion import OppVersion
-from pyoppversion.consts import OppVersionBoard, OppVersionChannel, OppVersionSource
+# from pyoppversion import OppioVersion
+from pyoppversion import PyPiVersion
 
 
-async def example():
+async def test():
     """Example usage of pyoppversion."""
     async with aiohttp.ClientSession() as session:
-        sources = [
-            OppVersionSource.DOCKER,
-            OppVersionSource.SUPERVISED,
-            OppVersionSource.OPPIO,
-            OppVersionSource.PYPI,
-        ]
-        for source in sources:
-            version, data = await OppVersion(
-                session=session,
-                source=source,
-                channel=OppVersionChannel.DEFAULT,
-                board=OppVersionBoard.DEFAULT,
-            ).get_version()
-            print(source)
-            print("Version:", version)
-            print("Version data:", data)
-            print()
+        # data = OppioVersion(loop, branch="beta", session=session, image="raspberrypi4")
+        # data = PyPiVersion(loop, branch="beta", session=session)
+        data = PyPiVersion(loop, session=session)
+        await data.get_version()
+
+        print("Version:", data.version)
+        print("Attributes:", data.version_data)
 
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(example())
+loop.run_until_complete(test())

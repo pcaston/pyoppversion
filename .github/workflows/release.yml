@@ -1,32 +1,25 @@
-name: Release
+name: "Release actions"
 
 on:
-  release:
-    types: ["published"]
+  push:
+    tags:
+      - "*"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy to PyPi
     steps:
-      - name: 📥 Checkout the repository
-        uses: actions/checkout@v2
-
-      - name: 🛠 Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        id: python
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v1
         with:
-          python-version: 3.x
+          python-version: "3.x"
+      
+      - name: Install dependencies
+        run: python -m pip install setuptools wheel twine
 
-      - name: 📦 Install dependencies
-        run:  python3 -m pip install setuptools wheel twine
-
-      - name: 🔢 Set version number
-        run: |
-          export version=${{ github.ref }}
-          sed -i "s|main|${version##*/}|" ./setup.py
-          cat ./setup.py
-      - name: 🚀 Publish to PyPi
+      - name: Publish to PyPi
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}

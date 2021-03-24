@@ -9,7 +9,7 @@ _Get the latest Open Peer Power version from various sources._
 ## Installation
 
 ```bash
-python3 -m pip install pyoppversion
+pip install pyoppversion
 ```
 
 Look at the file `example.py` for a usage example.
