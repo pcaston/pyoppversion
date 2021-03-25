@@ -256,7 +256,7 @@ class PyPiVersion(Version):
             _LOGGER.critical("Something really wrong happened! - %s", error)
 
 
-class HaIoVersion(Version):
+class OpIoVersion(Version):
     """Open-peer-power.io version."""
 
     async def get_version(self):
