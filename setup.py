@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     LONG = fh.read()
 setuptools.setup(
     name="pyoppversion",
-    version="3.4.1",
+    version="3.4.2",
     author="Paul Caston",
     author_email="paul@caston.id.au",
     description="",
