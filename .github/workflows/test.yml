@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Enable version ${{ matrix.python-version }} of Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2.2.2
       with:
         python-version: ${{ matrix.python-version }}
 
