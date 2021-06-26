@@ -23,7 +23,7 @@ from .consts import (
 )
 from .exceptions import OpVersionInputException
 
-URL = "https://version.open-peer-power.io/{channel}.json"
+URL = "https://version.openpeerpower.io/{channel}.json"
 
 
 class OpVersionSupervisor(OpVersionBase):

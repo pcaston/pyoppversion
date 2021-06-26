@@ -20,7 +20,7 @@ class OpVersionContainer(OpVersionBase):
         if self.session is None:
             raise OpVersionInputException("Missing aiohttp.ClientSession")
         if self.image is None or self.image == DEFAULT_IMAGE:
-            self.image = "open-peer-power"
+            self.image = "openpeerpower"
 
     async def fetch(self, url: str = None):
         """Logic to fetch new version data."""

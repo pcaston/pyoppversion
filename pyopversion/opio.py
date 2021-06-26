@@ -14,11 +14,11 @@ from .consts import (
 )
 from .exceptions import OpVersionInputException
 
-URL = "https://www.open-peer-power.io/version.json"
+URL = "https://www.openpeerpower.io/version.json"
 
 
 class OpVersionOpio(OpVersionBase):
-    """Handle versions for the open-peer-power.io source."""
+    """Handle versions for the openpeerpower.io source."""
 
     def validate_input(self) -> None:
         """Raise OpVersionInputException if expected input are missing."""

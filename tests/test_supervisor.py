@@ -16,7 +16,7 @@ from .const import HEADERS, STABLE_VERSION
 async def test_stable_version(aresponses):
     """Test Oppio stable."""
     aresponses.add(
-        "version.open-peer-power.io",
+        "version.openpeerpower.io",
         "/stable.json",
         "get",
         aresponses.Response(

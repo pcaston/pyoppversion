@@ -106,7 +106,7 @@ async def test_stable_version_pagination(aresponses):
     """Test container beta during beta week."""
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags",
+        "/v2/repositories/openpeerpower/openpeerpower/tags",
         "get",
         aresponses.Response(
             text=fixture("container/page1", False), status=200, headers=HEADERS
@@ -114,7 +114,7 @@ async def test_stable_version_pagination(aresponses):
     )
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags/page2",
+        "/v2/repositories/openpeerpower/openpeerpower/tags/page2",
         "get",
         aresponses.Response(
             text=fixture("container/page2", False), status=200, headers=HEADERS
@@ -134,7 +134,7 @@ async def test_beta_version_pagination(aresponses):
     """Test container beta during beta week."""
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags",
+        "/v2/repositories/openpeerpower/openpeerpower/tags",
         "get",
         aresponses.Response(
             text=fixture("container/beta_week_page1", False),
@@ -144,7 +144,7 @@ async def test_beta_version_pagination(aresponses):
     )
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags/page2",
+        "/v2/repositories/openpeerpower/openpeerpower/tags/page2",
         "get",
         aresponses.Response(
             text=fixture("container/beta_week_page2", False),
@@ -167,7 +167,7 @@ async def test_stable_version_beta_week_pagination(aresponses):
     """Test container beta during beta week."""
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags",
+        "/v2/repositories/openpeerpower/openpeerpower/tags",
         "get",
         aresponses.Response(
             text=fixture("container/beta_week_page1", False),
@@ -177,7 +177,7 @@ async def test_stable_version_beta_week_pagination(aresponses):
     )
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags/page2",
+        "/v2/repositories/openpeerpower/openpeerpower/tags/page2",
         "get",
         aresponses.Response(
             text=fixture("container/beta_week_page2", False),
@@ -200,7 +200,7 @@ async def test_beta_version_beta_week_pagination(aresponses):
     """Test container beta during beta week."""
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags",
+        "/v2/repositories/openpeerpower/openpeerpower/tags",
         "get",
         aresponses.Response(
             text=fixture("container/beta_week_page1", False),
@@ -210,7 +210,7 @@ async def test_beta_version_beta_week_pagination(aresponses):
     )
     aresponses.add(
         "registry.hub.docker.com",
-        "/v2/repositories/openpeerpower/open-peer-power/tags/page2",
+        "/v2/repositories/openpeerpower/openpeerpower/tags/page2",
         "get",
         aresponses.Response(
             text=fixture("container/beta_week_page2", False),
