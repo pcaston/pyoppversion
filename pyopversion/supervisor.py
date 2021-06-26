@@ -9,7 +9,7 @@ from .consts import (
     DATA_BOARD,
     DATA_CLI,
     DATA_DNS,
-    DATA_HASSOS,
+    DATA_OPPOS,
     DATA_openpeerpower,
     DATA_IMAGE,
     DATA_MULTICAST,
@@ -55,7 +55,7 @@ class OpVersionSupervisor(OpVersionBase):
             self.image = DEFAULT_IMAGE
         self._version = self.data.get(DATA_openpeerpower, {}).get(self.image)
         if self.board != DEFAULT_BOARD and self.board not in self.data.get(
-            DATA_HASSOS, {}
+            DATA_OPPOS, {}
         ):
             LOGGER.warning(
                 "Board '%s' not found, using default '%s'", self.board, DEFAULT_BOARD
@@ -66,7 +66,7 @@ class OpVersionSupervisor(OpVersionBase):
             DATA_BOARD: self.board,
             DATA_CLI: self.data.get(DATA_CLI),
             DATA_DNS: self.data.get(DATA_DNS),
-            DATA_OS: self.data.get(DATA_HASSOS, {}).get(self.board),
+            DATA_OS: self.data.get(DATA_OPPOS, {}).get(self.board),
             DATA_IMAGE: self.image,
             DATA_MULTICAST: self.data.get(DATA_MULTICAST),
             DATA_OBSERVER: self.data.get(DATA_OBSERVER),

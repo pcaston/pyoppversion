@@ -1,4 +1,4 @@
-"""Tests for Hassio."""
+"""Tests for Oppio."""
 from unittest.mock import patch
 
 import aiohttp
@@ -14,7 +14,7 @@ from .const import HEADERS, STABLE_VERSION
 
 @pytest.mark.asyncio
 async def test_stable_version(aresponses):
-    """Test hassio stable."""
+    """Test Oppio stable."""
     aresponses.add(
         "version.open-peer-power.io",
         "/stable.json",
@@ -31,7 +31,7 @@ async def test_stable_version(aresponses):
 
 @pytest.mark.asyncio
 async def test_beta_version(OpVersion):
-    """Test hassio beta."""
+    """Test Oppio beta."""
     with patch(
         "pyopversion.supervisor.OpVersionSupervisor.data",
         fixture("supervisor/default"),
