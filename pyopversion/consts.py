@@ -8,7 +8,7 @@ DEFAULT_BOARD = "ova"
 DEFAULT_IMAGE = "default"
 DEFAULT_TIMEOUT = 10
 DEFAULT_HEADERS = {
-    "User-Agent": "python/pyharversion",
+    "User-Agent": "python/pyoprversion",
     "Content-Type": "application/json",
 }
 
@@ -18,7 +18,7 @@ DATA_CHANNEL = "channel"
 DATA_CLI = "cli"
 DATA_CURRENT_VERSION = "current_version"
 DATA_DNS = "dns"
-DATA_HASSOS = "hassos"
+DATA_OPPOS = "oppos"
 DATA_openpeerpower = "openpeerpower"
 DATA_IMAGE = "image"
 DATA_INFO = "info"

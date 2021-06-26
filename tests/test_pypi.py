@@ -1,89 +1,71 @@
 """Tests for PyPi."""
-
-import json
+from unittest.mock import patch
 
 import aiohttp
 import pytest
-from pyopversion import PyPiVersion
-from .const import (
-    HEADERS,
-    STABLE_VERSION,
-    STABLE_VERSION_BETA_WEEK,
-    BETA_VERSION,
-    BETA_VERSION_BETA_WEEK,
-)
-from .fixtures.fixture_pypi import pypi_response, pypi_response_beta_week
+
+from pyopversion import OpVersion
+from pyopversion.consts import OpVersionChannel, OpVersionSource
+from pyopversion.exceptions import OpVersionInputException
+from tests.common import fixture
+
+from .const import BETA_VERSION, HEADERS, STABLE_VERSION, STABLE_VERSION_BETA_WEEK
 
 
 @pytest.mark.asyncio
-async def test_stable_version(aresponses, event_loop, pypi_response):
+async def test_stable_version(OpVersion):
     """Test pypi stable."""
-    aresponses.add(
-        "pypi.org",
-        "/pypi/openpeerpower/json",
-        "get",
-        aresponses.Response(
-            text=json.dumps(pypi_response), status=200, headers=HEADERS
-        ),
-    )
-
-    async with aiohttp.ClientSession(loop=event_loop) as session:
-        oppversion = PyPiVersion(event_loop, session)
-        await oppversion.get_version()
-        assert oppversion.version == STABLE_VERSION
+    with patch(
+        "pyopversion.pypi.OpVersionPypi.data",
+        fixture("pypi/default"),
+    ):
+        async with aiohttp.ClientSession() as session:
+            opversion = OpVersion(
+                session=session,
+                source=OpVersionSource.PYPI,
+            )
+            await opversion.get_version()
+            assert opversion.version == STABLE_VERSION
 
 
 @pytest.mark.asyncio
-async def test_beta_version(aresponses, event_loop, pypi_response):
+async def test_beta_version(OpVersion):
     """Test pypi beta."""
-    aresponses.add(
-        "pypi.org",
-        "/pypi/openpeerpower/json",
-        "get",
-        aresponses.Response(
-            text=json.dumps(pypi_response), status=200, headers=HEADERS
-        ),
-    )
-
-    async with aiohttp.ClientSession(loop=event_loop) as session:
-        oppversion = PyPiVersion(event_loop, session, "beta")
-        await oppversion.get_version()
-        assert oppversion.version == BETA_VERSION
+    with patch(
+        "pyopversion.pypi.OpVersionPypi.data",
+        fixture("pypi/beta"),
+    ):
+        async with aiohttp.ClientSession() as session:
+            opversion = OpVersion(
+                session=session,
+                source=OpVersionSource.PYPI,
+                channel=OpVersionChannel.BETA,
+            )
+            await opversion.get_version()
+            assert opversion.version == BETA_VERSION
 
 
 @pytest.mark.asyncio
-async def test_stable_version_beta_week(
-    aresponses, event_loop, pypi_response_beta_week
-):
+async def test_stable_version_beta_week(aresponses):
     """Test pypi stable during beta week."""
     aresponses.add(
         "pypi.org",
         "/pypi/openpeerpower/json",
         "get",
         aresponses.Response(
-            text=json.dumps(pypi_response_beta_week), status=200, headers=HEADERS
+            text=fixture("pypi/beta", False), status=200, headers=HEADERS
         ),
     )
-
-    async with aiohttp.ClientSession(loop=event_loop) as session:
-        oppversion = PyPiVersion(event_loop, session)
-        await oppversion.get_version()
-        assert oppversion.version == STABLE_VERSION_BETA_WEEK
+    async with aiohttp.ClientSession() as session:
+        opversion = OpVersion(
+            session=session,
+            source=OpVersionSource.PYPI,
+        )
+        await opversion.get_version()
+        assert opversion.version == STABLE_VERSION_BETA_WEEK
 
 
 @pytest.mark.asyncio
-async def test_beta_version_beta_week(aresponses, event_loop, pypi_response_beta_week):
-    """Test pypi beta during beta week."""
-    aresponses.add(
-        "pypi.org",
-        "/pypi/openpeerpower/json",
-        "get",
-        aresponses.Response(
-            text=json.dumps(pypi_response_beta_week), status=200, headers=HEADERS
-        ),
-    )
-
-    async with aiohttp.ClientSession(loop=event_loop) as session:
-        oppversion = PyPiVersion(event_loop, session, "beta")
-        await oppversion.get_version()
-        assert oppversion.version == "9.99.9b12"
+async def test_input_exception(OpVersion):
+    with pytest.raises(OpVersionInputException):
+        OpVersion(source=OpVersionSource.PYPI)
