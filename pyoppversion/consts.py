@@ -1,50 +1,58 @@
-"""Constants for pyoppversion."""
+"""Constants for pyopversion."""
+import logging
 from enum import Enum
 
-BOARDS = {
-    "default": "ova",
-    "intel-nuc": "intel-nuc",
-    "odroid-c2": "odroid-c2",
-    "odroid-n2": "odroid-n2",
-    "odroid-xu": "odroid-c2",
-    "raspberrypi": "rpi",
-    "raspberrypi2": "rpi2",
-    "raspberrypi3-64": "rpi3-64",
-    "raspberrypi3": "rpi3",
-    "tinker": "tinker",
+LOGGER: logging.Logger = logging.getLogger(__package__)
+
+DEFAULT_BOARD = "ova"
+DEFAULT_IMAGE = "default"
+DEFAULT_TIMEOUT = 10
+DEFAULT_HEADERS = {
+    "User-Agent": "python/pyharversion",
+    "Content-Type": "application/json",
 }
 
-IMAGES = {
-    "default": {"docker": "open-peer-power", "oppio": "default"},
-    "intel-nuc": {"docker": "intel-nuc-openpeerpower", "oppio": "intel-nuc"},
-    "odroid-c2": {"docker": "odroid-c2-openpeerpower", "oppio": "odroid-c2"},
-    "odroid-n2": {"docker": "odroid-n2-openpeerpower", "oppio": "odroid-n2"},
-    "odroid-xu": {"docker": "odroid-xu-openpeerpower", "oppio": "odroid-xu"},
-    "qemuarm-64": {"docker": "qemuarm-64-openpeerpower", "oppio": "qemuarm-64"},
-    "qemuarm": {"docker": "qemuarm-openpeerpower", "oppio": "qemuarm"},
-    "qemux86-64": {"docker": "qemux86-64-openpeerpower", "oppio": "qemux86-64"},
-    "qemux86": {"docker": "qemux86-openpeerpower", "oppio": "qemux86"},
-    "raspberrypi": {"docker": "raspberrypi-openpeerpower", "oppio": "raspberrypi"},
-    "raspberrypi2": {"docker": "raspberrypi2-openpeerpower", "oppio": "raspberrypi2"},
-    "raspberrypi3-64": {
-        "docker": "raspberrypi3-64-openpeerpower",
-        "oppio": "raspberrypi3-64",
-    },
-    "raspberrypi3": {"docker": "raspberrypi3-openpeerpower", "oppio": "raspberrypi3"},
-    "raspberrypi4-64": {
-        "docker": "raspberrypi4-64-openpeerpower",
-        "oppio": "raspberrypi4-64",
-    },
-    "raspberrypi4": {"docker": "raspberrypi4-openpeerpower", "oppio": "raspberrypi4"},
-    "tinker": {"docker": "tinker-openpeerpower", "oppio": "tinker"},
-}
+DATA_AUDIO = "audio"
+DATA_BOARD = "board"
+DATA_CHANNEL = "channel"
+DATA_CLI = "cli"
+DATA_CURRENT_VERSION = "current_version"
+DATA_DNS = "dns"
+DATA_HASSOS = "hassos"
+DATA_openpeerpower = "openpeerpower"
+DATA_IMAGE = "image"
+DATA_INFO = "info"
+DATA_MULTICAST = "multicast"
+DATA_OBSERVER = "observer"
+DATA_OS = "os"
+DATA_RAW = "raw"
+DATA_RELEASE_DATE = "release_date"
+DATA_RELEASE_DESCRIPTION = "release_description"
+DATA_RELEASE_NOTES = "release_notes"
+DATA_RELEASE_TITLE = "release_title"
+DATA_RELEASES = "releases"
+DATA_SOURCE = "source"
+DATA_SUPERVISOR = "supervisor"
+DATA_VERSION = "version"
 
-URL = {
-    "docker": "https://registry.hub.docker.com/v2/repositories/openpeerpower/{}/tags",
-    "oppio": {
-        "stable": "https://version.openpeerpower.io//stable.json",
-        "beta": "https://version.openpeerpower.io//beta.json",
-    },
-    "pypi": "https://pypi.org/pypi/openpeerpower/json",
-    "oppio": "https://www.openpeerpower.io//version.json",
-}
+
+class OpVersionSource(str, Enum):
+    """Valid sources for pyopversion."""
+
+    CONTAINER = "container"
+    OPIO = "opio"
+    LOCAL = "local"
+    PYPI = "pypi"
+    SUPERVISOR = "supervisor"
+
+    DEFAULT = LOCAL
+
+
+class OpVersionChannel(str, Enum):
+    """Valid version channels."""
+
+    BETA = "beta"
+    DEV = "dev"
+    STABLE = "stable"
+
+    DEFAULT = STABLE

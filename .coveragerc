@@ -1,0 +1,12 @@
+[run]
+source = pyopversion
+
+omit =
+    # omit setup
+    setup.py
+
+    # omit tests
+    tests/*
+
+    # omit example
+    example.py

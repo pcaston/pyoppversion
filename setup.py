@@ -1,27 +1,34 @@
-"""Setup configuration."""
-import setuptools
+"""The setup script."""
+from setuptools import find_packages, setup
 
-with open("README.md", "r") as fh:
-    LONG = fh.read()
-setuptools.setup(
-    name="pyoppversion",
-    version="3.4.2",
-    author="Paul Caston",
+with open("README.md") as readme_file:
+    readme = readme_file.read()
+
+setup(
     author_email="paul@caston.id.au",
-    description="",
-    long_description=LONG,
-    install_requires=[
-        "aiohttp",
-        "async_timeout<=3.0.1",
-        "pytest-runner",
-        "semantic_version",
-    ],
-    long_description_content_type="text/markdown",
-    url="https://github.com/ludeeus/pyoppversion",
-    packages=setuptools.find_packages(exclude=["tests", "tests.*"]),
+    author="Paul Caston",
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
+    description="Get the latest Open Peer Power version from various sources.",
+    install_requires=[
+        "aiohttp>=3.6.1,<4.0",
+        "async_timeout<=3.0.1",
+        "awesomeversion>=21.2.3",
+    ],
+    keywords=["openpeerpower", "version", "update"],
+    license="MIT license",
+    long_description_content_type="text/markdown",
+    long_description=readme,
+    name="pyoppversion",
+    packages=find_packages(include=["pyopversion"]),
+    python_requires=">=3.8.0",
+    url="https://github.com/pcaston/pyoppversion",
+    version="master",
 )
