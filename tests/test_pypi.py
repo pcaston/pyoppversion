@@ -4,7 +4,7 @@ import json
 
 import aiohttp
 import pytest
-from pyoppversion import PyPiVersion
+from pyopversion import PyPiVersion
 from .const import (
     HEADERS,
     STABLE_VERSION,

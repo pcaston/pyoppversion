@@ -4,7 +4,7 @@ import json
 
 import aiohttp
 import pytest
-from pyoppversion import DockerVersion
+from pyopversion import DockerVersion
 from .const import (
     HEADERS,
     STABLE_VERSION,

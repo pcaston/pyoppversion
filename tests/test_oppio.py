@@ -4,7 +4,7 @@ import json
 
 import aiohttp
 import pytest
-from pyoppversion import OppioVersion
+from pyopversion import OppioVersion
 from .const import (
     HEADERS,
     STABLE_VERSION,

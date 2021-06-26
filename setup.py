@@ -26,9 +26,9 @@ setup(
     license="MIT license",
     long_description_content_type="text/markdown",
     long_description=readme,
-    name="pyoppversion",
+    name="pyopversion",
     packages=find_packages(include=["pyopversion"]),
     python_requires=">=3.8.0",
-    url="https://github.com/pcaston/pyoppversion",
+    url="https://github.com/pcaston/pyopversion",
     version="main",
 )

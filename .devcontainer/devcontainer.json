@@ -1,5 +1,5 @@
 {
-	"name": "pyoppversion",
+	"name": "pyopversion",
 	"context": "..",
 	"postCreateCommand": "make requirements",
 	"extensions": [
