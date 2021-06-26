@@ -11,7 +11,7 @@ from .const import HEADERS, STABLE_VERSION
 
 
 @pytest.mark.asyncio
-async def test_haio(aresponses):
+async def test_opio(aresponses):
     """Test ha.io/version.json stable."""
     aresponses.add(
         "version.openpeerpower.io/",
@@ -22,7 +22,7 @@ async def test_haio(aresponses):
         ),
     )
     async with aiohttp.ClientSession() as session:
-        opversion = OpVersion(session=session, source=OpVersionSource.HAIO)
+        opversion = OpVersion(session=session, source=OpVersionSource.OPIO)
         await opversion.get_version()
         assert opversion.version == STABLE_VERSION
 
@@ -30,4 +30,4 @@ async def test_haio(aresponses):
 @pytest.mark.asyncio
 async def test_input_exception(OpVersion):
     with pytest.raises(OpVersionInputException):
-        OpVersion(source=OpVersionSource.HAIO)
+        OpVersion(source=OpVersionSource.OPIO)

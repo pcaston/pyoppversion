@@ -17,7 +17,7 @@ async def mocked_fetch(self):
 def OpVersion():
     with patch(
         "pyopversion.container.OpVersionContainer.fetch", return_value=mocked_fetch
-    ), patch("pyopversion.haio.OpVersionHaio.fetch", return_value=mocked_fetch), patch(
+    ), patch("pyopversion.opio.OpVersionOpio.fetch", return_value=mocked_fetch), patch(
         "pyopversion.local.OpVersionLocal.fetch", return_value=mocked_fetch
     ), patch(
         "pyopversion.pypi.OpVersionPypi.fetch", return_value=mocked_fetch
