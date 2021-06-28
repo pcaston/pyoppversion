@@ -12,9 +12,9 @@ from .const import HEADERS, STABLE_VERSION
 
 @pytest.mark.asyncio
 async def test_opio(aresponses):
-    """Test ha.io/version.json stable."""
+    """Test op.io/version.json stable."""
     aresponses.add(
-        "version.openpeerpower.io/",
+        "openpeerpower.io/version",
         "/stable.json",
         "get",
         aresponses.Response(
