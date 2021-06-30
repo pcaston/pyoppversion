@@ -14,8 +14,8 @@ from .const import HEADERS, STABLE_VERSION
 async def test_opio(aresponses):
     """Test op.io/version.json stable."""
     aresponses.add(
-        "version.openpeerpower.io",
-        "/stable.json",
+        "www.openpeerpower.io",
+        "/version.json",
         "get",
         aresponses.Response(
             text=fixture("opio/default", False), status=200, headers=HEADERS

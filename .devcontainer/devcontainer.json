@@ -1,5 +1,6 @@
 {
 	"name": "pyopversion",
+	"image": "ghcr.io/ludeeus/devcontainer/python:stable",
 	"context": "..",
 	"postCreateCommand": "make requirements",
 	"extensions": [
