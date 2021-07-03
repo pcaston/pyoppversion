@@ -13,6 +13,7 @@ async def example():
         sources = [
             OpVersionSource.CONTAINER,
             OpVersionSource.SUPERVISOR,
+            OpVersionSource.OPIO,
             OpVersionSource.PYPI,
         ]
         for source in sources:

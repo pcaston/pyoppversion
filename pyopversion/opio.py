@@ -14,7 +14,7 @@ from .consts import (
 )
 from .exceptions import OpVersionInputException
 
-URL = "https://www.openpeerpower.io/version.json"
+URL = "https://openpeerpower.io/version.json"
 
 
 class OpVersionOpio(OpVersionBase):
