@@ -11,7 +11,6 @@ async def example():
     """Example usage of pyopversion."""
     async with aiohttp.ClientSession() as session:
         sources = [
-            OpVersionSource.CONTAINER,
             OpVersionSource.SUPERVISOR,
             OpVersionSource.PYPI,
         ]
