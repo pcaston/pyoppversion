@@ -19,7 +19,7 @@ setup(
     description="Get the latest Open Peer Power version from various sources.",
     install_requires=[
         "aiohttp>=3.6.1,<4.0",
-        "async_timeout<=3.0.1",
+        "async_timeout<4.0.2",
         "awesomeversion>=21.2.3",
     ],
     keywords=["openpeerpower", "version", "update"],
